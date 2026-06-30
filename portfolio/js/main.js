@@ -51,7 +51,7 @@ gsap.utils.toArray('.glass-card').forEach((card, i) => {
     gsap.from(card, {
         opacity: 0,
         y: 50,
-        duration: 0.6, // Faster animation
+        duration: 0.4, // Faster animation
         scrollTrigger: {
             trigger: card,
             start: 'top 80%',
@@ -64,9 +64,10 @@ gsap.utils.toArray('.glass-card').forEach((card, i) => {
 const typingText = document.getElementById('typing-text');
 const phrases = [
     'Computer Science Student',
-    'Java Developer',
+    'Java Programmer',
     'Python Programmer',
-    'Machine Learning Enthusiast'
+    'Machine Learning Enthusiast',
+    'Student of Life'
 ];
 
 let phraseIndex = 0;
@@ -315,7 +316,7 @@ document.querySelectorAll('.flex.justify-between.items-center').forEach(item => 
         const bar = item.querySelector('div > div');
         gsap.to(bar, {
             width: '100%',
-            duration: 0.5,
+            duration: 0.3,
             ease: 'power2.out'
         });
     });
@@ -325,7 +326,7 @@ document.querySelectorAll('.flex.justify-between.items-center').forEach(item => 
         const originalWidth = bar.parentElement.style.width || '100%';
         gsap.to(bar, {
             width: originalWidth,
-            duration: 0.5,
+            duration: 0.3,
             ease: 'power2.out'
         });
     });
@@ -366,37 +367,45 @@ document.addEventListener('visibilitychange', () => {
 
 // Contact form submission (basic implementation)
 const contactFormElement = document.querySelector('#contact form');
+
 if (contactFormElement) {
-    contactFormElement.addEventListener('submit', (e) => {
+    emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS Public Key
+
+    contactFormElement.addEventListener("submit", function(e) {
         e.preventDefault();
-        
-        // Simple form validation
-        const name = contactFormElement.querySelector('input[placeholder="Your Name"]').value;
-        const email = contactFormElement.querySelector('input[placeholder="Your Email"]').value;
-        const message = contactFormElement.querySelector('textarea').value;
-        
-        if (!name || !email || !message) {
-            alert('Please fill in all fields.');
-            return;
-        }
-        
-        // Simulate form submission
+
         const submitBtn = contactFormElement.querySelector('button[type="submit"]');
         const originalText = submitBtn.textContent;
-        
-        submitBtn.textContent = 'Sending...';
+
+        submitBtn.textContent = "Sending...";
         submitBtn.disabled = true;
-        
-        setTimeout(() => {
-            submitBtn.textContent = 'Message Sent!';
+
+        emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+            from_name: contactFormElement.querySelector('input[placeholder="Your Name"]').value,
+            from_email: contactFormElement.querySelector('input[placeholder="Your Email"]').value,
+            message: contactFormElement.querySelector('textarea').value,
+
+            // Your email
+            to_email: "mehersitej988@gmail.com"
+        })
+        .then(() => {
+            submitBtn.textContent = "Message Sent!";
+            contactFormElement.reset();
+
             setTimeout(() => {
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
-                contactFormElement.reset();
             }, 2000);
-        }, 1500);
+        })
+        .catch((error) => {
+            console.error(error);
+            alert("Failed to send message.");
+
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+        });
     });
-}
+};
 
 // Add smooth hover effects to CTA buttons
 document.querySelectorAll('button').forEach(btn => {
