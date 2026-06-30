@@ -380,7 +380,7 @@ if (contactFormElement) {
         submitBtn.textContent = "Sending...";
         submitBtn.disabled = true;
 
-        emailjs.send("YOUR_service_gud8ymn", "template_em44lu3", {
+        emailjs.send("service_gud8ymn", "template_em44lu3", {
             from_name: contactFormElement.querySelector('input[placeholder="Your Name"]').value,
             from_email: contactFormElement.querySelector('input[placeholder="Your Email"]').value,
             message: contactFormElement.querySelector('textarea').value,
