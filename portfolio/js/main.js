@@ -369,7 +369,7 @@ document.addEventListener('visibilitychange', () => {
 const contactFormElement = document.querySelector('#contact form');
 
 if (contactFormElement) {
-    emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS Public Key
+    emailjs.init("bz_ebCQ7H2-aUufuX"); // Replace with your EmailJS Public Key
 
     contactFormElement.addEventListener("submit", function(e) {
         e.preventDefault();
