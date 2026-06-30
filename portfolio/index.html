@@ -1,24 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sitej Meher - Premium 3D Portfolio</title>
-    <meta name="description" content="Premium 3D portfolio of Sitej Meher - Computer Science Student, Java & Python Developer, Machine Learning Enthusiast">
-    <meta name="keywords" content="Sitej Meher, portfolio, 3D portfolio, Java developer, Python developer, Computer Science, Machine Learning">
+    <meta name="description"
+        content="Premium 3D portfolio of Sitej Meher - Computer Science Student, Java & Python Developer, Machine Learning Enthusiast">
+    <meta name="keywords"
+        content="Sitej Meher, portfolio, 3D portfolio, Java developer, Python developer, Computer Science, Machine Learning">
     <meta name="author" content="Sitej Meher">
-    
+
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-    
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Custom Tailwind Config -->
     <script>
         tailwind.config = {
@@ -57,13 +62,13 @@
             }
         }
     </script>
-    
+
     <!-- External Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    
+
     <style>
         /* Custom CSS for premium effects */
         :root {
@@ -98,7 +103,7 @@
 
         /* 3D Text Effects */
         .text-3d {
-            text-shadow: 
+            text-shadow:
                 0 0 10px #3b82f6,
                 0 0 20px #3b82f6,
                 0 0 30px #3b82f6,
@@ -183,8 +188,13 @@
         }
 
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         /* Responsive Adjustments */
@@ -196,6 +206,7 @@
         }
     </style>
 </head>
+
 <body class="relative">
     <!-- Loading Screen -->
     <div class="loader" id="loader">
@@ -210,7 +221,7 @@
 
     <!-- Main Content -->
     <div class="relative z-10">
-        
+
         <!-- Navigation -->
         <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent">
             <div class="container mx-auto px-6 py-4">
@@ -218,14 +229,16 @@
                     <div class="text-2xl font-bold text-white">
                         <span class="text-electric">Sitej</span> <span class="text-neon">Meher</span>
                     </div>
-                    
+
                     <!-- Desktop Navigation -->
                     <div class="hidden md:flex space-x-8">
                         <a href="#hero" class="nav-link text-gray-300 hover:text-white transition-colors">Home</a>
                         <a href="#about" class="nav-link text-gray-300 hover:text-white transition-colors">About</a>
                         <a href="#skills" class="nav-link text-gray-300 hover:text-white transition-colors">Skills</a>
-                        <a href="#education" class="nav-link text-gray-300 hover:text-white transition-colors">Education</a>
-                        <a href="#experience" class="nav-link text-gray-300 hover:text-white transition-colors">Experience</a>
+                        <a href="#education"
+                            class="nav-link text-gray-300 hover:text-white transition-colors">Education</a>
+                        <a href="#experience"
+                            class="nav-link text-gray-300 hover:text-white transition-colors">Experience</a>
                         <a href="#contact" class="nav-link text-gray-300 hover:text-white transition-colors">Contact</a>
                     </div>
 
@@ -233,7 +246,8 @@
                     <div class="md:hidden">
                         <button id="mobile-menu-toggle" class="text-white focus:outline-none">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 6h16M4 12h16M4 18h16"></path>
                             </svg>
                         </button>
                     </div>
@@ -244,8 +258,10 @@
                     <a href="#hero" class="block py-2 text-gray-300 hover:text-white transition-colors">Home</a>
                     <a href="#about" class="block py-2 text-gray-300 hover:text-white transition-colors">About</a>
                     <a href="#skills" class="block py-2 text-gray-300 hover:text-white transition-colors">Skills</a>
-                    <a href="#education" class="block py-2 text-gray-300 hover:text-white transition-colors">Education</a>
-                    <a href="#experience" class="block py-2 text-gray-300 hover:text-white transition-colors">Experience</a>
+                    <a href="#education"
+                        class="block py-2 text-gray-300 hover:text-white transition-colors">Education</a>
+                    <a href="#experience"
+                        class="block py-2 text-gray-300 hover:text-white transition-colors">Experience</a>
                     <a href="#contact" class="block py-2 text-gray-300 hover:text-white transition-colors">Contact</a>
                 </div>
             </div>
@@ -258,10 +274,10 @@
                 <h1 class="text-3d text-8xl md:text-9xl font-extrabold mb-4 animate-float" id="hero-name">
                     SITEJ MEHER
                 </h1>
-                
+
                 <!-- Animated Typing Effect -->
                 <div class="text-2xl md:text-3xl text-gray-300 mb-8 font-light" id="typing-text"></div>
-                
+
                 <!-- Branding Statement -->
                 <p class="text-lg md:text-xl text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed">
                     Passionate about building intelligent and scalable solutions using Java and Python.
@@ -269,15 +285,16 @@
 
                 <!-- CTA Buttons -->
                 <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                    <button class="bg-gradient-to-r from-electric to-neon text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-lg hover:shadow-electric/50 transform hover:-translate-y-1 transition-all duration-300 glass-card border-0">
+                    <!-- <button class="bg-gradient-to-r from-electric to-neon text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-lg hover:shadow-electric/50 transform hover:-translate-y-1 transition-all duration-300 glass-card border-0">
                         View Portfolio
-                    </button>
-                    <button class="border-2 border-electric text-electric px-8 py-4 rounded-full text-lg font-semibold hover:bg-electric hover:text-white transition-all duration-300">
+                    </button> -->
+                    <a href="skm_Resume(1).pdf" download
+                        class="border-2 border-electric text-electric px-17 py-4 rounded-full text-lg font-bold hover:bg-electric hover:text-white transition-all duration-300 inline-block">
                         Download Resume
-                    </button>
-                    <button class="border-2 border-neon text-neon px-8 py-4 rounded-full text-lg font-semibold hover:bg-neon hover:text-white transition-all duration-300">
+                    </a>
+                    <!-- <button class="border-2 border-neon text-neon px-8 py-4 rounded-full text-lg font-semibold hover:bg-neon hover:text-white transition-all duration-300">
                         Contact Me
-                    </button>
+                    </button> -->
                 </div>
             </div>
         </section>
@@ -289,7 +306,11 @@
                 <div class="max-w-4xl mx-auto">
                     <div class="glass-card p-8 md:p-12 hover:shadow-xl transition-all duration-500">
                         <p class="text-lg text-gray-300 leading-relaxed">
-                            I am a highly motivated Computer Science student with strong analytical thinking skills and a deep interest in Machine Learning. I possess strong command over Java and Python along with hands-on experience in problem solving and web development. I am actively seeking opportunities to apply my technical skills in a dynamic and growth-oriented environment.
+                            I am a highly motivated Computer Science student with strong analytical thinking skills and
+                            a deep interest in Machine Learning and Artificial Intelligence. I possess strong command
+                            over Java and Python along with hands-on experience in problem solving and Machine Learning.
+                            I am actively seeking opportunities to apply my technical skills in a dynamic and
+                            growth-oriented environment.
                         </p>
                     </div>
                 </div>
@@ -301,7 +322,7 @@
             <div class="container mx-auto px-6">
                 <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 text-white">Skills</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-                    
+
                     <!-- Technical Skills -->
                     <div class="glass-card p-8">
                         <h3 class="text-2xl font-bold text-electric mb-6">Technical Skills</h3>
@@ -368,29 +389,44 @@
                 <div class="max-w-4xl mx-auto">
                     <div class="relative">
                         <!-- Timeline Line -->
-                        <div class="absolute left-8 top-0 bottom-0 w-1 bg-gradient-to-b from-electric to-neon rounded-full"></div>
-                        
+                        <div
+                            class="absolute left-8 top-0 bottom-0 w-1 bg-gradient-to-b from-electric to-neon rounded-full">
+                        </div>
+
                         <!-- Education Items -->
                         <div class="space-y-12">
-                            <div class="glass-card p-8 relative hover:shadow-xl transition-all duration-500" data-aos="fade-right">
-                                <div class="absolute -left-12 top-8 w-16 h-16 bg-electric rounded-full flex items-center justify-center text-white font-bold text-lg">2025</div>
+                            <div class="glass-card p-8 relative hover:shadow-xl transition-all duration-500"
+                                data-aos="fade-right">
+                                <div
+                                    class="absolute -left-12 top-8 w-16 h-16 bg-electric rounded-full flex items-center justify-center text-white font-bold text-lg">
+                                    2024</div>
                                 <h3 class="text-2xl font-bold text-white mb-2">GIET University, Gunupur, Rayagada</h3>
                                 <p class="text-electric font-semibold mb-2">Bachelor in Computer Science (Ongoing)</p>
-                                <p class="text-gray-300">Currently pursuing advanced studies in Computer Science with focus on modern technologies and development practices.</p>
+                                <p class="text-gray-300">Currently pursuing advanced studies (Bachelore in technology)
+                                    in Computer Science specialized in Artificial Intelligence & Machine Learning with
+                                    focus on modern technologies like and development practices.</p>
                             </div>
 
-                            <div class="glass-card p-8 relative hover:shadow-xl transition-all duration-500" data-aos="fade-left">
-                                <div class="absolute -left-12 top-8 w-16 h-16 bg-neon rounded-full flex items-center justify-center text-white font-bold text-lg">2024</div>
+                            <div class="glass-card p-8 relative hover:shadow-xl transition-all duration-500"
+                                data-aos="fade-left">
+                                <div
+                                    class="absolute -left-12 top-8 w-16 h-16 bg-neon rounded-full flex items-center justify-center text-white font-bold text-lg">
+                                    2024</div>
                                 <h3 class="text-2xl font-bold text-white mb-2">PSHSS Bhawanipatna</h3>
                                 <p class="text-neon font-semibold mb-2">Higher Secondary Education (CHSE)</p>
-                                <p class="text-gray-300">Completed higher secondary education with strong foundation in science and mathematics.</p>
+                                <p class="text-gray-300">Completed higher secondary education with strong foundation in
+                                    science and mathematics and Information and technology.</p>
                             </div>
 
-                            <div class="glass-card p-8 relative hover:shadow-xl transition-all duration-500" data-aos="fade-right">
-                                <div class="absolute -left-12 top-8 w-16 h-16 bg-cyan rounded-full flex items-center justify-center text-white font-bold text-lg">2022</div>
+                            <div class="glass-card p-8 relative hover:shadow-xl transition-all duration-500"
+                                data-aos="fade-right">
+                                <div
+                                    class="absolute -left-12 top-8 w-16 h-16 bg-cyan rounded-full flex items-center justify-center text-white font-bold text-lg">
+                                    2022</div>
                                 <h3 class="text-2xl font-bold text-white mb-2">SSN Bhawanipatna</h3>
                                 <p class="text-cyan font-semibold mb-2">High School</p>
-                                <p class="text-gray-300">Completed secondary education with excellent academic performance and extracurricular involvement.</p>
+                                <p class="text-gray-300">Completed secondary education with excellent academic
+                                    performance and extracurricular involvement.</p>
                             </div>
                         </div>
                     </div>
@@ -408,7 +444,9 @@
                         <h3 class="text-3xl font-bold text-electric mb-4">Prep Right EdTech Pvt Ltd</h3>
                         <p class="text-2xl text-neon mb-6">Java Programming | 2025</p>
                         <p class="text-lg text-gray-300 leading-relaxed">
-                            Worked on Java programming tasks, strengthened core programming concepts, and contributed to logical problem solving and implementation. Gained valuable experience in software development practices and collaborative coding environments.
+                            Worked on Java programming tasks, strengthened core programming concepts, and contributed to
+                            logical problem solving and implementation. Gained valuable experience in software
+                            development practices and collaborative coding environments.
                         </p>
                     </div>
                 </div>
@@ -420,7 +458,7 @@
             <div class="container mx-auto px-6">
                 <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 text-white">Get In Touch</h2>
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-                    
+
                     <!-- Contact Info -->
                     <div class="glass-card p-8">
                         <h3 class="text-2xl font-bold text-white mb-8">Let's Connect</h3>
@@ -434,7 +472,7 @@
                                     <p class="text-white font-semibold">+91 7978736547</p>
                                 </div>
                             </div>
-                            
+
                             <div class="flex items-center space-x-4">
                                 <div class="w-12 h-12 bg-neon rounded-full flex items-center justify-center">
                                     <span class="text-white text-xl">✉️</span>
@@ -444,7 +482,7 @@
                                     <p class="text-white font-semibold">mehersitej988@gmail.com</p>
                                 </div>
                             </div>
-                            
+
                             <div class="flex items-center space-x-4">
                                 <div class="w-12 h-12 bg-cyan rounded-full flex items-center justify-center">
                                     <span class="text-white text-xl">📍</span>
@@ -462,12 +500,17 @@
                         <h3 class="text-2xl font-bold text-white mb-8">Send Me a Message</h3>
                         <form class="space-y-6">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <input type="text" placeholder="Your Name" class="bg-navy-900 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-electric transition-colors">
-                                <input type="email" placeholder="Your Email" class="bg-navy-900 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-electric transition-colors">
+                                <input type="text" placeholder="Your Name"
+                                    class="bg-navy-900 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-electric transition-colors">
+                                <input type="email" placeholder="Your Email"
+                                    class="bg-navy-900 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-electric transition-colors">
                             </div>
-                            <input type="text" placeholder="Subject" class="w-full bg-navy-900 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-electric transition-colors">
-                            <textarea placeholder="Your Message" rows="5" class="w-full bg-navy-900 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-electric transition-colors resize-none"></textarea>
-                            <button type="submit" class="w-full bg-gradient-to-r from-electric to-neon text-white py-3 rounded-lg font-semibold hover:shadow-lg hover:shadow-electric/50 transform hover:-translate-y-1 transition-all duration-300">
+                            <input type="text" placeholder="Subject"
+                                class="w-full bg-navy-900 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-electric transition-colors">
+                            <textarea placeholder="Your Message" rows="5"
+                                class="w-full bg-navy-900 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-electric transition-colors resize-none"></textarea>
+                            <button type="submit"
+                                class="w-full bg-gradient-to-r from-electric to-neon text-white py-3 rounded-lg font-semibold hover:shadow-lg hover:shadow-electric/50 transform hover:-translate-y-1 transition-all duration-300">
                                 Send Message
                             </button>
                         </form>
@@ -489,4 +532,5 @@
     <!-- JavaScript -->
     <script src="js/main.js"></script>
 </body>
+
 </html>
