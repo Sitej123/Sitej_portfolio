@@ -1,4 +1,4 @@
-// Main JavaScript for Sitej Meher's Premium 3D Portfolio (Optimized)
+// Main JavaScript for Sitej Meher's Premium 3D Portfolio
 
 // Initialize GSAP ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
@@ -8,7 +8,7 @@ window.addEventListener('load', () => {
     const loader = document.getElementById('loader');
     setTimeout(() => {
         loader.classList.add('hidden');
-    }, 500);
+    }, 1000);
 });
 
 // Mobile Menu Toggle
@@ -38,6 +38,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 behavior: 'smooth',
                 block: 'start'
             });
+            // Hide mobile menu if open
             if (!mobileMenu.classList.contains('hidden')) {
                 mobileMenu.classList.add('hidden');
             }
@@ -45,15 +46,15 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Scroll-triggered Animations (optimized for faster loading)
+// Scroll-triggered Animations
 gsap.utils.toArray('.glass-card').forEach((card, i) => {
     gsap.from(card, {
         opacity: 0,
-        y: 20,
-        duration: 0.25,
+        y: 50,
+        duration: 0.4, // Faster animation
         scrollTrigger: {
             trigger: card,
-            start: 'top 90%',
+            start: 'top 80%',
             toggleActions: 'play none none reverse'
         }
     });
@@ -65,7 +66,8 @@ const phrases = [
     'Computer Science Student',
     'Java Programmer',
     'Python Programmer',
-    'Machine Learning Enthusiast'
+    'Machine Learning Enthusiast',
+    'Student of Life'
 ];
 
 let phraseIndex = 0;
@@ -81,10 +83,10 @@ function typeWriter() {
         typingText.textContent = currentPhrase.substring(0, charIndex++);
     }
 
-    let typeSpeed = 75;
+    let typeSpeed = 75; // Faster typing speed
 
     if (charIndex === currentPhrase.length) {
-        typeSpeed = 1500;
+        typeSpeed = 1000; // Faster deletion delay
         isDeleting = true;
     } else if (charIndex === 0) {
         isDeleting = false;
@@ -94,40 +96,40 @@ function typeWriter() {
     setTimeout(typeWriter, typeSpeed);
 }
 
-setTimeout(typeWriter, 1000);
+// Start typing effect after a short delay
+setTimeout(typeWriter, 1500);
 
-// 3D Background Animation with Three.js (Optimized)
+// 3D Background Animation with Three.js
 class ThreeBackground {
     constructor() {
         this.scene = null;
         this.camera = null;
         this.renderer = null;
+        this.particles = [];
+        this.isAnimating = false;
         
-        setTimeout(() => {
-            this.init();
-            if (this.renderer) this.animate();
-        }, 200);
+        this.init();
+        this.animate();
     }
 
     init() {
         const container = document.getElementById('3d-background');
-        if (!container || typeof THREE === 'undefined') return;
         
+        // Scene Setup
         this.scene = new THREE.Scene();
         this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         this.camera.position.z = 20;
 
-        this.renderer = new THREE.WebGLRenderer({ 
-            antialias: true, 
-            alpha: true,
-            powerPreference: "low-power"
-        });
+        // Renderer Setup
+        this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
         this.renderer.setSize(window.innerWidth, window.innerHeight);
-        this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        this.renderer.setPixelRatio(window.devicePixelRatio);
         container.appendChild(this.renderer.domElement);
 
+        // Create Particles
         this.createParticles();
 
+        // Handle Window Resize
         window.addEventListener('resize', () => {
             this.camera.aspect = window.innerWidth / window.innerHeight;
             this.camera.updateProjectionMatrix();
@@ -137,15 +139,16 @@ class ThreeBackground {
 
     createParticles() {
         const geometry = new THREE.BufferGeometry();
-        const count = 50;
+        const count = 100;
         
         const positions = new Float32Array(count * 3);
         const colors = new Float32Array(count * 3);
 
         const colorPalette = [
-            new THREE.Color(0x3b82f6),
-            new THREE.Color(0xa855f7),
-            new THREE.Color(0x06b6d4)
+            new THREE.Color(0x3b82f6), // Electric Blue
+            new THREE.Color(0xa855f7), // Neon Purple
+            new THREE.Color(0x06b6d4), // Cyan
+            new THREE.Color(0xf59e0b)  // Amber
         ];
 
         for (let i = 0; i < count; i++) {
@@ -163,16 +166,17 @@ class ThreeBackground {
         geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
         const material = new THREE.PointsMaterial({
-            size: 0.2,
+            size: 0.3,
             vertexColors: true,
             transparent: true,
-            opacity: 0.4,
+            opacity: 0.6,
             blending: THREE.AdditiveBlending
         });
 
         this.particleSystem = new THREE.Points(geometry, material);
         this.scene.add(this.particleSystem);
 
+        // Create Floating Shapes
         this.createFloatingShapes();
     }
 
@@ -180,30 +184,35 @@ class ThreeBackground {
         const shapes = [];
         const geometryTypes = [
             new THREE.BoxGeometry(2, 2, 2),
-            new THREE.SphereGeometry(1.5, 16, 16),
-            new THREE.TorusGeometry(1, 0.4, 8, 50)
+            new THREE.SphereGeometry(1.5, 32, 32),
+            new THREE.TorusGeometry(1, 0.4, 16, 100)
         ];
 
-        for (let i = 0; i < 8; i++) {
+        for (let i = 0; i < 15; i++) {
             const geometry = geometryTypes[Math.floor(Math.random() * geometryTypes.length)];
             const material = new THREE.MeshBasicMaterial({
                 color: Math.random() > 0.5 ? 0x3b82f6 : 0xa855f7,
                 transparent: true,
-                opacity: 0.05,
+                opacity: 0.1,
                 wireframe: true
             });
 
             const mesh = new THREE.Mesh(geometry, material);
             
+            // Random position
             mesh.position.x = (Math.random() - 0.5) * 40;
             mesh.position.y = (Math.random() - 0.5) * 40;
             mesh.position.z = (Math.random() - 0.5) * 20;
             
+            // Random rotation
             mesh.rotation.x = Math.random() * Math.PI;
             mesh.rotation.y = Math.random() * Math.PI;
             
+            // Animation properties
             mesh.userData = {
-                rotationSpeed: Math.random() * 0.005 + 0.002,
+                speed: Math.random() * 0.02 + 0.01,
+                rotationSpeed: Math.random() * 0.01 + 0.005,
+                amplitude: Math.random() * 5 + 2,
                 timeOffset: Math.random() * 100
             };
 
@@ -217,17 +226,28 @@ class ThreeBackground {
     animate() {
         requestAnimationFrame(() => this.animate());
 
+        // Animate Particles
         if (this.particleSystem) {
-            this.particleSystem.rotation.y += 0.001;
-            this.particleSystem.rotation.x += 0.0005;
+            this.particleSystem.rotation.y += 0.003; // Faster rotation
+            this.particleSystem.rotation.x += 0.0015; // Faster rotation
         }
 
+        // Animate Floating Shapes
         if (this.shapes) {
-            this.shapes.forEach((shape) => {
+            this.shapes.forEach((shape, index) => {
                 const data = shape.userData;
-                shape.position.y += Math.sin(Date.now() * 0.001 + data.timeOffset) * 0.01;
-                shape.rotation.x += data.rotationSpeed;
-                shape.rotation.y += data.rotationSpeed;
+                
+                // Floating animation
+                shape.position.y += Math.sin(Date.now() * 0.003 + data.timeOffset) * 0.04; // Faster floating
+                shape.position.x += Math.cos(Date.now() * 0.003 + data.timeOffset) * 0.02; // Faster floating
+                
+                // Rotation animation
+                shape.rotation.x += data.rotationSpeed * 2; // Faster rotation
+                shape.rotation.y += data.rotationSpeed * 3; // Faster rotation
+                
+                // Pulse animation
+                const scale = 1 + Math.sin(Date.now() * 0.002 + index) * 0.1;
+                shape.scale.set(scale, scale, scale);
             });
         }
 
@@ -235,114 +255,155 @@ class ThreeBackground {
     }
 }
 
+// Initialize 3D Background
 const threeBackground = new ThreeBackground();
 
-// Hero name animation (faster)
-gsap.from('#hero-name', {
-    opacity: 0,
-    y: 30,
-    duration: 0.5,
-    ease: 'power3.out'
-});
+// Enhanced Scroll Animations
+    gsap.from('#hero-name', {
+        opacity: 0,
+        y: 50,
+        duration: 0.8, // Faster animation
+        ease: 'power3.out'
+    });
 
-// Skills Section Animation (faster)
+// Skills Section Animation
 const skillBars = document.querySelectorAll('.w-24 > div');
 skillBars.forEach((bar, index) => {
     gsap.from(bar, {
         width: 0,
-        duration: 0.5,
-        delay: index * 0.08,
+        duration: 1.5,
+        delay: index * 0.2,
         ease: 'power3.out',
         scrollTrigger: {
             trigger: '#skills',
-            start: 'top 85%'
+            start: 'top 80%'
         }
     });
 });
 
-// Education Timeline Animation (fastest - immediate)
+// Education Timeline Animation
 const timelineItems = document.querySelectorAll('#education .glass-card');
-gsap.fromTo(timelineItems,
-    { opacity: 0, x: -20 },
-    {
-        opacity: 1,
-        x: 0,
-        duration: 0.25,
-        stagger: 0.05,
-        ease: 'power2.out',
+timelineItems.forEach((item, index) => {
+    gsap.from(item, {
+        opacity: 0,
+        x: index % 2 === 0 ? -50 : 50,
+        duration: 1,
+        delay: index * 0.2,
         scrollTrigger: {
-            trigger: '#education',
-            start: 'top 85%',
-            once: true
+            trigger: item,
+            start: 'top 80%'
         }
-    }
-);
+    });
+});
 
-// Projects Section Animation (immediate - no scroll wait)
-const projectCards = document.querySelectorAll('#projects .glass-card');
-gsap.fromTo(projectCards, 
-    { opacity: 0, y: 20 },
-    { 
-        opacity: 1, 
-        y: 0,
-        duration: 0.3,
-        stagger: 0.05,
-        ease: 'power2.out',
-        scrollTrigger: {
-            trigger: '#projects',
-            start: 'top 80%',
-            once: true
-        }
-    }
-);
-
-// Languages Section Animation (fastest - immediate)
-const languageCards = document.querySelectorAll('#languages .glass-card');
-gsap.fromTo(languageCards,
-    { opacity: 0, y: 15 },
-    {
-        opacity: 1,
-        y: 0,
-        duration: 0.2,
-        stagger: 0.04,
-        ease: 'power2.out',
-        scrollTrigger: {
-            trigger: '#languages',
-            start: 'top 85%',
-            once: true
-        }
-    }
-);
-
-// Contact Form Animation (faster)
+// Contact Form Animation
 const contactForm = document.querySelector('#contact form');
 if (contactForm) {
     gsap.from(contactForm, {
         opacity: 0,
-        y: 20,
-        duration: 0.4,
+        y: 50,
+        duration: 1,
         scrollTrigger: {
             trigger: '#contact',
-            start: 'top 85%'
+            start: 'top 80%'
         }
     });
 }
 
-// Parallax effect on hero
+// Add hover effects to skill bars
+document.querySelectorAll('.flex.justify-between.items-center').forEach(item => {
+    item.addEventListener('mouseenter', () => {
+        const bar = item.querySelector('div > div');
+        gsap.to(bar, {
+            width: '100%',
+            duration: 0.3,
+            ease: 'power2.out'
+        });
+    });
+
+    item.addEventListener('mouseleave', () => {
+        const bar = item.querySelector('div > div');
+        const originalWidth = bar.parentElement.style.width || '100%';
+        gsap.to(bar, {
+            width: originalWidth,
+            duration: 0.3,
+            ease: 'power2.out'
+        });
+    });
+});
+
+// Add parallax effect to hero section
 window.addEventListener('mousemove', (e) => {
     const hero = document.getElementById('hero');
-    const x = (e.clientX - window.innerWidth / 2) / 30;
-    const y = (e.clientY - window.innerHeight / 2) / 30;
+    const x = (e.clientX - window.innerWidth / 2) / 20;
+    const y = (e.clientY - window.innerHeight / 2) / 20;
+    
     if (hero) {
         hero.style.transform = `translate(${x}px, ${y}px)`;
     }
 });
 
-// Contact form submission
+// Add subtle floating animation to hero name
+const heroName = document.getElementById('hero-name');
+if (heroName) {
+    let floatDirection = 1;
+    setInterval(() => {
+        const currentY = parseFloat(heroName.style.transform.replace(/[^0-9\-\.]/g, '') || '0');
+        const newY = currentY + (floatDirection * 1); // Faster floating
+        
+        if (Math.abs(newY) > 10) {
+            floatDirection *= -1;
+        }
+        
+        heroName.style.transform = `translateY(${newY}px)`;
+    }, 100);
+}
+
+// Performance optimization: Pause animations when tab is not active
+let isTabActive = true;
+document.addEventListener('visibilitychange', () => {
+    isTabActive = !document.hidden;
+});
+
+// Projects Section Animation
+const projectCards = document.querySelectorAll('#projects .glass-card');
+projectCards.forEach((card, index) => {
+    gsap.from(card, {
+        opacity: 0,
+        y: 50,
+        scale: 0.9,
+        duration: 0.6,
+        delay: index * 0.1,
+        scrollTrigger: {
+            trigger: card,
+            start: 'top 85%',
+            toggleActions: 'play none none reverse'
+        }
+    });
+});
+
+// Languages Section Animation
+const languageCards = document.querySelectorAll('#languages .glass-card');
+languageCards.forEach((card, index) => {
+    gsap.from(card, {
+        opacity: 0,
+        y: 30,
+        scale: 0.8,
+        duration: 0.5,
+        delay: index * 0.15,
+        scrollTrigger: {
+            trigger: card,
+            start: 'top 85%',
+            toggleActions: 'play none none reverse'
+        }
+    });
+});
+
+// Contact form submission (basic implementation)
 const contactFormElement = document.querySelector('#contact form');
 
 if (contactFormElement) {
-    emailjs.init("bz_ebCQ7H2-aUufuX");
+    emailjs.init("bz_ebCQ7H2-aUufuX"); // Replace with your EmailJS Public Key
 
     contactFormElement.addEventListener("submit", function(e) {
         e.preventDefault();
@@ -357,6 +418,8 @@ if (contactFormElement) {
             from_name: contactFormElement.querySelector('input[placeholder="Your Name"]').value,
             from_email: contactFormElement.querySelector('input[placeholder="Your Email"]').value,
             message: contactFormElement.querySelector('textarea').value,
+
+            // Your email
             to_email: "mehersitej988@gmail.com"
         })
         .then(() => {
@@ -376,9 +439,28 @@ if (contactFormElement) {
             submitBtn.disabled = false;
         });
     });
-}
+};
 
-// Navigation highlighting
+// Add smooth hover effects to CTA buttons
+document.querySelectorAll('button').forEach(btn => {
+    btn.addEventListener('mouseenter', () => {
+        gsap.to(btn, {
+            scale: 1.05,
+            duration: 0.2,
+            ease: 'power2.out'
+        });
+    });
+
+    btn.addEventListener('mouseleave', () => {
+        gsap.to(btn, {
+            scale: 1,
+            duration: 0.2,
+            ease: 'power2.out'
+        });
+    });
+});
+
+// Add scroll-triggered navigation highlighting
 const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-link');
 
