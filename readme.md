@@ -10,8 +10,7 @@ This portfolio is designed with smooth animations, glassmorphism UI, and interac
 
 ( Add your deployed link here )
 
-Example:
-https://your-portfolio-link.vercel.app
+url: https://sitej-meher-portfolio-rseo.vercel.app/
 
 ---
 
